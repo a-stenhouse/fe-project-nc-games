@@ -32,7 +32,27 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+#reviewList {
+  list-style: none;
+  text-align: center;
+}
+
+.reviewCards {
+  border-style: outset;
+  width: 750px;
+  margin: auto;
+}
+
+.lhsDetails {
+  margin-right: 10px;
+}
+
+.rhsDetails {
+  margin-left: 10px;
 }
