@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import ReviewCards from "./ReviewCards"
+import fetchReviews from "../api";
 
 const ReviewsPage = () => {
 
@@ -8,8 +9,7 @@ const ReviewsPage = () => {
     const [category, setCategory] = useState("")
 
     useEffect(() => {
-        fetch("https://nc-games-portfolio-project.onrender.com/api/reviews")
-            .then((response) => response.json())
+        fetchReviews()
             .then((data) => {
                 setReviews(data.reviews)
                 setIsLoading(false)
