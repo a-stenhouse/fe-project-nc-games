@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  align-items: center;
+  justify-content: center;
 }
 
 .App-logo {
@@ -42,11 +42,13 @@
   }
 }
 
+
 .reviewLinks {
   all: unset;
   text-align: center;
   align-items: center;
   display: block;
+  width: 50%;
 }
 
 #reviewList {
@@ -54,11 +56,13 @@
   text-align: center;
   align-items: center;
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .reviewCards {
   border-style: outset;
-  width: 750px;
   text-align: center;
   align-items: center;
 }
@@ -72,5 +76,28 @@
 }
 
 .reviewBody {
+  display: block;
+}
+
+.reviewImg {
+  flex-shrink: 2;
+}
+
+.reviewContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 50%;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+}
+
+#commentsList {
+  list-style: none;
+  padding: 0;
+}
+
+var {
   display: block;
 }

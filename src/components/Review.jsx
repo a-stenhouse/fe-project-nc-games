@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react"
+import { fetchSingleReview } from "../api";
+import Comments from "./Comments";
 
 
 
@@ -10,8 +12,7 @@ const Review = () => {
     const { review_id } = useParams()
 
     useEffect(() => {
-        fetch(`https://nc-games-portfolio-project.onrender.com/api/reviews/${review_id}`)
-            .then((response) => response.json())
+        fetchSingleReview(review_id)
             .then((data) => {
                 setReview(data.review)
                 setIsLoading(false)
@@ -22,7 +23,7 @@ const Review = () => {
         <h1>Loading...</h1>
     ) : (
         <>
-            <article>
+            <article className="reviewContainer">
                 <h2>{review.title}</h2>
                 <h4>Written by {review.owner}</h4>
                 <img className="reviewImg" src={review.review_img_url} alt="Review"></img>
@@ -30,6 +31,7 @@ const Review = () => {
                 <button>Upvote this article!</button>
                 <span>Votes: {review.votes}</span>
             </article >
+            <Comments review_id={review_id} />
         </>
     )
 }
