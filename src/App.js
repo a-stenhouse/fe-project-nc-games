@@ -10,7 +10,7 @@ function App() {
       <Header />
 
       <Routes>
-        <Route path="/reviews" element=<ReviewsPage /> />
+        <Route path="/" element=<ReviewsPage /> />
         <Route path="/reviews/:review_id" element=<Review /> />
       </Routes>
     </div>
