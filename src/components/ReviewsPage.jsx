@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react"
 import ReviewCards from "./ReviewCards"
 import { fetchReviews } from "../api";
 import { HomeContext } from "../contexts/HomePage";
-import fetchReviews from "../api";
 
 const ReviewsPage = () => {
 

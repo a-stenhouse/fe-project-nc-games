@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { fetchComments } from "../api";
+import PostNewComment from "./PostNewComment";
 
 const Comments = ({ review_id }) => {
 
@@ -19,8 +20,8 @@ const Comments = ({ review_id }) => {
     ) :
         (
             <section>
-                {console.log(comments)}
                 <h3>Comments</h3>
+                <PostNewComment review_id={review_id} comments={comments} setComments={setComments} />
                 <ul id="commentsList">
                     {comments.map((comment) => {
                         return (
@@ -28,7 +29,7 @@ const Comments = ({ review_id }) => {
                                 <strong>{comment.author}</strong>
                                 <p>{comment.body}</p>
                                 <var>Votes: {comment.votes}</var>
-                                <time>{comment.created_at.slice(0, 10)}</time>
+                                <time>{comment.created_at}</time>
                             </li>
                         )
                     })}

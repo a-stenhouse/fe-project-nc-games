@@ -32,3 +32,14 @@ export const fetchUser = () => {
     return fetch("https://nc-games-portfolio-project.onrender.com/api/users")
         .then((response) => response.json())
 }
+
+export const postComment = (comment, review_id) => {
+    return fetch(`https://nc-games-portfolio-project.onrender.com/api/reviews/${review_id}/comments`, {
+        method: "POST",
+        body: JSON.stringify(comment),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        }
+    })
+        .then((response) => response.json)
+}
