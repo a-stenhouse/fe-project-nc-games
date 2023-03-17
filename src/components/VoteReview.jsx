@@ -18,6 +18,8 @@ const VoteReview = ({ review_id, review, setReview }) => {
                     setHasVotedOn(false);
                     const index = user.votedOn.indexOf(review_id);
                     user.votedOn.splice(index, 1);
+                    setReview({ ...review, votes: review.votes })
+                    window.alert("You are offline, vote not submitted!")
                 })
         } else {
             window.alert("You must be signed in to vote!")

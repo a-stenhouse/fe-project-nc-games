@@ -100,3 +100,30 @@
 var {
   display: block;
 }
+
+header {
+  display: grid;
+  grid-template-columns: 25vw 50vw 25vw;
+  grid-template-rows: auto auto;
+}
+
+#header {
+  grid-column: 2/3;
+}
+
+.signIn {
+  grid-column: 3/4;
+  justify-self: center;
+}
+
+#signInButton {
+  max-height: 25%;
+  align-self: center;
+}
+
+#backButton {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  max-width: 75%;
+  justify-self: center;
+}

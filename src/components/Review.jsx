@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { fetchSingleReview } from "../api";
 import Comments from "./Comments";
 import VoteReview from "./VoteReview";
+import { HomeContext } from "../contexts/HomePage"
 
 
 
@@ -11,6 +12,11 @@ const Review = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [review, setReview] = useState({});
     const { review_id } = useParams()
+    const { isHomePage, setIsHomePage } = useContext(HomeContext)
+
+    useEffect(() => {
+        setIsHomePage(false)
+    })
 
     useEffect(() => {
         fetchSingleReview(review_id)
