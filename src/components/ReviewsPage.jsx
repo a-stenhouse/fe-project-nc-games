@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import ReviewCards from "./ReviewCards"
+import { fetchReviews } from "../api";
+import { HomeContext } from "../contexts/HomePage";
 import fetchReviews from "../api";
 
 const ReviewsPage = () => {
@@ -7,6 +9,11 @@ const ReviewsPage = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [reviews, setReviews] = useState([]);
     const [category, setCategory] = useState("")
+    const { isHomePage, setIsHomePage } = useContext(HomeContext)
+
+    useEffect(() => {
+        setIsHomePage(true)
+    })
 
     useEffect(() => {
         fetchReviews()
