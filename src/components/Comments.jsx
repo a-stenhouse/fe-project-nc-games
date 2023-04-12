@@ -6,7 +6,7 @@ const Comments = ({ review_id }) => {
 
     const [comments, setComments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-
+    
     useEffect(() => {
         fetchComments(review_id)
             .then((response) => {

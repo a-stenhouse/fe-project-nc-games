@@ -42,4 +42,5 @@ export const postComment = (comment, review_id) => {
         }
     })
         .then((response) => response.json)
+        .catch((err) => console.log(err))
 }
