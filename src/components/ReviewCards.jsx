@@ -12,6 +12,7 @@ const ReviewCards = ({ reviews }) => {
                             <section>
                                 <var className="lhsDetails">Written by: {review.owner}</var>
                                 <var className="rhsDetails">Created: {review.created_at.slice(0, 10)}</var>
+                                <var>Category: {review.category}</var>
                             </section>
                             <section>
                                 <var className="lhsDetails">Votes: {review.votes}</var>

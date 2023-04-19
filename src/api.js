@@ -1,6 +1,8 @@
-export const fetchReviews = () => {
-    return fetch("https://nc-games-portfolio-project.onrender.com/api/reviews")
-        .then((response) => response.json())
+export const fetchReviews = (category, sortBy = "review_id", orderBy = "DESC") => {
+    return fetch(`https://nc-games-portfolio-project.onrender.com/api/reviews?sortBy=${sortBy}&orderBy=${orderBy}${category ? `&category=${category}` : ""}`)
+        .then((response) => {
+            return response.json()
+        })
 }
 
 export const fetchSingleReview = (review_id) => {

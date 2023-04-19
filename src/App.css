@@ -4,6 +4,7 @@
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
+  background-color: #3A3A41;
 }
 
 .App-logo {
@@ -43,12 +44,21 @@
 }
 
 
+.selectCategory {
+  max-width: 50%;
+  display: flex;
+  align-self: center;
+}
+
 .reviewLinks {
   all: unset;
   text-align: center;
   align-items: center;
   display: block;
   width: 50%;
+  outline: none;
+  text-decoration: none;
+  border-color: blue;
 }
 
 #reviewList {
@@ -59,12 +69,19 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  outline: none;
+  text-decoration: none;
 }
 
 .reviewCards {
   border-style: outset;
   text-align: center;
   align-items: center;
+  text-decoration: none;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border-color: white;
+  padding-bottom: 2%;
 }
 
 .lhsDetails {
@@ -126,4 +143,12 @@ header {
   grid-row: 2/3;
   max-width: 75%;
   justify-self: center;
+}
+
+h1 {
+  color: #E7731D;
+}
+
+h2 {
+  color: #E7731D;
 }

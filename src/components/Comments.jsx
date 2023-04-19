@@ -6,7 +6,6 @@ const Comments = ({ review_id }) => {
 
     const [comments, setComments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    
     useEffect(() => {
         fetchComments(review_id)
             .then((response) => {
@@ -29,7 +28,7 @@ const Comments = ({ review_id }) => {
                                 <strong>{comment.author}</strong>
                                 <p>{comment.body}</p>
                                 <var>Votes: {comment.votes}</var>
-                                <time>{comment.created_at}</time>
+                                <time>{comment.created_at.slice(0, 10)}</time>
                             </li>
                         )
                     })}
