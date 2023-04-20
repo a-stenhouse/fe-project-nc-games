@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react"
 import ReviewCards from "./ReviewCards"
+import ReviewPageHeader from "./ReviewPageHeader"
 import { fetchReviews } from "../api";
 import { HomeContext } from "../contexts/HomePage";
 
@@ -7,7 +8,9 @@ const ReviewsPage = () => {
 
     const [isLoading, setIsLoading] = useState(true);
     const [reviews, setReviews] = useState([]);
-    const [category, setCategory] = useState("")
+    const [category, setCategory] = useState("");
+    const [sortBy, setSortBy] = useState("review_id");
+    const [order, setOrder] = useState("DESC")
     const { setIsHomePage } = useContext(HomeContext)
 
     useEffect(() => {
@@ -16,34 +19,18 @@ const ReviewsPage = () => {
 
     useEffect(() => {
         setIsLoading(true)
-        fetchReviews(category)
+        fetchReviews(category, sortBy, order)
             .then((data) => {
                 setReviews(data.reviews)
                 setIsLoading(false)
             });
-    }, [category])
-
-    const handleCategory = (event) => {
-        setCategory(event.target.value)
-    }
-
-
-
+    }, [category, sortBy, order])
 
     return isLoading ? (
         <h1>Loading...</h1>
     ) : (
         <>
-            <select className="selectCategory" value={category} onChange={handleCategory}>
-                <option value="">All</option>
-                <option value="strategy">Strategy</option>
-                <option value="hidden-roles">Hidden-roles</option>
-                <option value="dexterity">Dexterity</option>
-                <option value="push-your-luck">Push-your-luck</option>
-                <option value="roll-and-write">Roll-and-write</option>
-                <option value="deck-building">Deck-building</option>
-                <option value="engine-building">Engine-building</option>
-            </select>
+            <ReviewPageHeader category={category} setCategory={setCategory} sortBy={sortBy} setSortBy={setSortBy} order={order} setOrder={setOrder} />
             <ReviewCards reviews={reviews} />
         </>
     )
