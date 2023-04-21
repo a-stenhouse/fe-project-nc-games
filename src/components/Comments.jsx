@@ -18,13 +18,13 @@ const Comments = ({ review_id }) => {
         <h1>Loading...</h1>
     ) :
         (
-            <section>
+            <section id="commentSection">
                 <h3>Comments</h3>
                 <PostNewComment review_id={review_id} comments={comments} setComments={setComments} />
                 <ul id="commentsList">
                     {comments.map((comment) => {
                         return (
-                            <li key={comment.comment_id}>
+                            <li key={comment.comment_id} className="commentCards">
                                 <strong>{comment.author}</strong>
                                 <p>{comment.body}</p>
                                 <var>Votes: {comment.votes}</var>

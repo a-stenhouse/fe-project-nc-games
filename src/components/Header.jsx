@@ -1,11 +1,11 @@
 import UserSignIn from "./UserSignIn"
-import { Link, useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { HomeContext } from "../contexts/HomePage"
 import { useContext } from "react";
 
 const Header = () => {
 
-    const { isHomePage, setIsHomePage } = useContext(HomeContext)
+    const { isHomePage } = useContext(HomeContext)
 
     return isHomePage ?
         (
@@ -18,8 +18,8 @@ const Header = () => {
             <header>
                 <h1 id="header">NC Game Reviews</h1>
                 <UserSignIn />
-                <Link id="backButton" to="/">
-                    <button>Back to reviews</button>
+                <Link id="backButtonLink" to="/">
+                    <button id="backButton">BACK TO REVIEWS</button>
                 </Link>
             </header>
         )
