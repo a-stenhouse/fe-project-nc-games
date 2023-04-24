@@ -1,20 +1,26 @@
-const ReviewPageHeader = ({ category, setCategory, sortBy, setSortBy, order, setOrder }) => {
+const ReviewPageHeader = ({ searchParams, setSearchParams, categoryQuery, sortByQuery, orderQuery }) => {
+
+    const updateSearchParams = (parameter, value) => {
+        const newParams = new URLSearchParams(searchParams);
+        newParams.set(parameter, value);
+        setSearchParams(newParams);
+    }
 
     const handleCategory = (event) => {
-        setCategory(event.target.value)
+        updateSearchParams("category", event.target.value)
     }
 
     const handleSortBy = (event) => {
-        setSortBy(event.target.value)
+        updateSearchParams("sortBy", event.target.value)
     }
 
     const handleOrder = (event) => {
-        setOrder(event.target.value)
+        updateSearchParams("order", event.target.value)
     }
 
     return (
         <header id="reviewPageHeader">
-            <select className="selectCategory" value={category} onChange={handleCategory}>
+            <select className="selectCategory" onChange={handleCategory} value={categoryQuery ? categoryQuery : ""}>
                 <option value="">All</option>
                 <option value="strategy">Strategy</option>
                 <option value="hidden-roles">Hidden-roles</option>
@@ -24,13 +30,13 @@ const ReviewPageHeader = ({ category, setCategory, sortBy, setSortBy, order, set
                 <option value="deck-building">Deck-building</option>
                 <option value="engine-building">Engine-building</option>
             </select>
-            <select className="selectSortBy" value={sortBy} onChange={handleSortBy}>
+            <select className="selectSortBy" onChange={handleSortBy} value={sortByQuery ? sortByQuery : "review_id"}>
                 <option value="review_id">Default</option>
                 <option value="created_at">Date</option>
                 <option value="comment_count">Comments</option>
                 <option value="votes">Votes</option>
             </select>
-            <select className="selectOrder" value={order} onChange={handleOrder}>
+            <select className="selectOrder" onChange={handleOrder} value={orderQuery ? orderQuery : "DESC"}>
                 <option value="DESC">Descending</option>
                 <option value="ASC">Ascending</option>
             </select>

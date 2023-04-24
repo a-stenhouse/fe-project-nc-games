@@ -1,5 +1,6 @@
-export const fetchReviews = (category, sortBy = "review_id", orderBy = "DESC") => {
-    return fetch(`https://nc-games-portfolio-project.onrender.com/api/reviews?sortBy=${sortBy}&sortOrder=${orderBy}${category ? `&category=${category}` : ""}`)
+export const fetchReviews = (category, sortBy, orderBy) => {
+    console.log(category, sortBy, orderBy)
+    return fetch(`https://nc-games-portfolio-project.onrender.com/api/reviews?sortBy=${sortBy ? sortBy : "review_id"}&sortOrder=${orderBy ? orderBy : "DESC"}${category ? `&category=${category}` : ""}`)
         .then((response) => {
             return response.json()
         })

@@ -3,15 +3,17 @@ import ReviewCards from "./ReviewCards"
 import ReviewPageHeader from "./ReviewPageHeader"
 import { fetchReviews } from "../api";
 import { HomeContext } from "../contexts/HomePage";
+import { useSearchParams } from "react-router-dom"
 
 const ReviewsPage = () => {
 
     const [isLoading, setIsLoading] = useState(true);
     const [reviews, setReviews] = useState([]);
-    const [category, setCategory] = useState("");
-    const [sortBy, setSortBy] = useState("review_id");
-    const [order, setOrder] = useState("DESC")
-    const { setIsHomePage } = useContext(HomeContext)
+    const { setIsHomePage } = useContext(HomeContext);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const categoryQuery = searchParams.get("category")
+    const sortByQuery = searchParams.get("sortBy")
+    const orderQuery = searchParams.get("order")
 
     useEffect(() => {
         setIsHomePage(true)
@@ -19,21 +21,22 @@ const ReviewsPage = () => {
 
     useEffect(() => {
         setIsLoading(true)
-        fetchReviews(category, sortBy, order)
+        fetchReviews(categoryQuery, sortByQuery, orderQuery)
             .then((data) => {
                 setReviews(data.reviews)
                 setIsLoading(false)
             });
-    }, [category, sortBy, order])
+    }, [categoryQuery, sortByQuery, orderQuery])
 
     return isLoading ? (
         <h1>Loading...</h1>
     ) : (
         <>
-            <ReviewPageHeader category={category} setCategory={setCategory} sortBy={sortBy} setSortBy={setSortBy} order={order} setOrder={setOrder} />
+            <ReviewPageHeader searchParams={searchParams} setSearchParams={setSearchParams} categoryQuery={categoryQuery} sortByQuery={sortByQuery} orderQuery={orderQuery} />
             <ReviewCards reviews={reviews} />
         </>
     )
 }
+
 
 export default ReviewsPage
