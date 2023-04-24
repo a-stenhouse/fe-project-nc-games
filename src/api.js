@@ -46,3 +46,13 @@ export const postComment = (comment, review_id) => {
         .then((response) => response.json)
         .catch((err) => console.log(err))
 }
+
+export const deleteComment = (comment_id) => {
+    return fetch(`https://nc-games-portfolio-project.onrender.com/api/comments/${comment_id}`, {
+        method: "DELETE",
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        }
+    })
+        .then((response) => console.log(response))
+}
