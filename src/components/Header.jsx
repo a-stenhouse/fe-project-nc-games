@@ -9,14 +9,14 @@ const Header = () => {
 
     return isHomePage ?
         (
-            <header>
-                <h1 id="header">NC Game Reviews</h1>
+            <header id="pageHeader">
+                <h1 id="title">NC Game Reviews</h1>
                 <UserSignIn />
             </header>
         ) :
         (
-            <header>
-                <h1 id="header">NC Game Reviews</h1>
+            <header id="pageHeader">
+                <h1 id="title">NC Game Reviews</h1>
                 <UserSignIn />
                 <Link id="backButtonLink" to="/">
                     <button id="backButton">BACK TO REVIEWS</button>

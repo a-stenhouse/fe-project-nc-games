@@ -3,14 +3,13 @@ import { increaseVotes } from "../api";
 import { useState, useEffect, useContext } from "react"
 
 const VoteReview = ({ review_id, review, setReview }) => {
-    const { isSignedIn, setIsSignedIn } = useContext(UserContext);
+    const { isSignedIn } = useContext(UserContext);
     const [hasVotedOn, setHasVotedOn] = useState(false);
-    const { user, setUser } = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     const handleUpvote = () => {
         if (isSignedIn) {
             user.votedOn.push(review_id)
-            // setUser({ ...user, votedOn: [...user.votedOn, review_id] })
             setHasVotedOn(true)
             setReview({ ...review, votes: review.votes + 1 })
             increaseVotes(review_id)
@@ -37,7 +36,7 @@ const VoteReview = ({ review_id, review, setReview }) => {
     }, [review_id, isSignedIn])
 
     return (
-        <button onClick={handleUpvote} disabled={hasVotedOn}>Upvote this article!</button>
+        <button className="reviewButtons" onClick={handleUpvote} disabled={hasVotedOn}>Upvote this article!</button>
     )
 }
 

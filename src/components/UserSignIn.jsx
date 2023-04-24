@@ -21,7 +21,7 @@ const UserSignIn = () => {
 
     return isSignedIn ? (
         <div className="signIn">
-            <p id="userSignedIn">Signed in as {user.username}</p>
+            <p id="userSignedIn">Signed in as: {user.username}</p>
             <button id="signOutButton" onClick={handleSignOut}>SIGN OUT</button>
         </div>
     ) : (

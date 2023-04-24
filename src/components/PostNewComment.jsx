@@ -17,7 +17,7 @@ const PostNewComment = ({ review_id, comments, setComments }) => {
                 votes: 0,
                 author: user.username,
                 review_id: review_id,
-                created_at: "2023-02-23T11:11:46.000Z"
+                created_at: new Date().toISOString()
             }
             const postedComment = {
                 body: comment,
@@ -34,10 +34,10 @@ const PostNewComment = ({ review_id, comments, setComments }) => {
 
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form id="commentForm" onSubmit={handleSubmit}>
             <h4>Post a new comment</h4>
-            <input id="commentField" type="text" value={comment} onChange={(event) => setComment(event.target.value)} />
-            <input type="submit" />
+            <textarea id="commentField" type="text" placeholder="Type comment here..." value={comment} onChange={(event) => setComment(event.target.value)} />
+            <input className="reviewButtons" type="submit" />
         </form>
     )
 }

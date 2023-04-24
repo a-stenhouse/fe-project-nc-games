@@ -20,7 +20,7 @@ const ReviewPageHeader = ({ searchParams, setSearchParams, categoryQuery, sortBy
 
     return (
         <header id="reviewPageHeader">
-            <select className="selectCategory" onChange={handleCategory} value={categoryQuery ? categoryQuery : ""}>
+            <select className="reviewPageHeaderSelects" onChange={handleCategory} value={categoryQuery ? categoryQuery : ""}>
                 <option value="">All</option>
                 <option value="strategy">Strategy</option>
                 <option value="hidden-roles">Hidden-roles</option>
@@ -30,13 +30,13 @@ const ReviewPageHeader = ({ searchParams, setSearchParams, categoryQuery, sortBy
                 <option value="deck-building">Deck-building</option>
                 <option value="engine-building">Engine-building</option>
             </select>
-            <select className="selectSortBy" onChange={handleSortBy} value={sortByQuery ? sortByQuery : "review_id"}>
+            <select className="reviewPageHeaderSelects" onChange={handleSortBy} value={sortByQuery ? sortByQuery : "review_id"}>
                 <option value="review_id">Default</option>
                 <option value="created_at">Date</option>
                 <option value="comment_count">Comments</option>
                 <option value="votes">Votes</option>
             </select>
-            <select className="selectOrder" onChange={handleOrder} value={orderQuery ? orderQuery : "DESC"}>
+            <select className="reviewPageHeaderSelects" onChange={handleOrder} value={orderQuery ? orderQuery : "DESC"}>
                 <option value="DESC">Descending</option>
                 <option value="ASC">Ascending</option>
             </select>
