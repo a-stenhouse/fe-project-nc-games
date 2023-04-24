@@ -4,6 +4,7 @@ import { fetchSingleReview } from "../api";
 import Comments from "./Comments";
 import VoteReview from "./VoteReview";
 import { HomeContext } from "../contexts/HomePage"
+import Header from "./Header";
 
 
 
@@ -12,7 +13,7 @@ const Review = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [review, setReview] = useState({});
     const { review_id } = useParams()
-    const { isHomePage, setIsHomePage } = useContext(HomeContext)
+    const { setIsHomePage } = useContext(HomeContext)
 
     useEffect(() => {
         setIsHomePage(false)
@@ -27,9 +28,13 @@ const Review = () => {
     }, [review_id])
 
     return isLoading ? (
-        <h1>Loading...</h1>
+        <>
+            <Header />
+            <h1>Loading...</h1>
+        </>
     ) : (
         <>
+            <Header />
             <article className="reviewContainer">
                 <h2>{review.title}</h2>
                 <h4>Written by {review.owner}</h4>

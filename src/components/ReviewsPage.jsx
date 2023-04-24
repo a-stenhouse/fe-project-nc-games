@@ -4,6 +4,7 @@ import ReviewPageHeader from "./ReviewPageHeader"
 import { fetchReviews } from "../api";
 import { HomeContext } from "../contexts/HomePage";
 import { useSearchParams } from "react-router-dom"
+import Header from "./Header";
 
 const ReviewsPage = () => {
 
@@ -29,9 +30,13 @@ const ReviewsPage = () => {
     }, [categoryQuery, sortByQuery, orderQuery])
 
     return isLoading ? (
-        <h1>Loading...</h1>
+        <>
+            <Header />
+            <h1>Loading...</h1>
+        </>
     ) : (
         <>
+            <Header />
             <ReviewPageHeader searchParams={searchParams} setSearchParams={setSearchParams} categoryQuery={categoryQuery} sortByQuery={sortByQuery} orderQuery={orderQuery} />
             <ReviewCards reviews={reviews} />
         </>
